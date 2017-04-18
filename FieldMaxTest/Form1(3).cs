@@ -31,13 +31,17 @@ namespace FieldMaxTest
 
         private List<Info> devicesList = new List<Info>();
         private Info selectedDeviceComboBox1;
+        private FolderBrowserDialog folderBrowserDialog1 = new FolderBrowserDialog();
 
         const int DotsAmount = 1000;
         private EngineFM2 engine;
         private PointPairList list = new PointPairList();
+        private PointPairList allData = new PointPairList();
         private Stopwatch stopwatch = new Stopwatch();
         private StreamWriter DataFile;
+        private StreamWriter SaveFile;
         private PointPairList AverageList = new PointPairList();
+        private string StartTime;
 
         private double getAverageOfLastPointsInList(int numbOfDots, PointPairList listWithPoints)
         {
@@ -76,6 +80,7 @@ namespace FieldMaxTest
             zedGraphControl1.GraphPane.AddCurve("", AverageList, Color.Red, SymbolType.None);
             
             timer1.Enabled = false;
+            button_ExportData.Enabled = false;
             
             engine = new EngineFM2();
             engine.EventNotifyFault += ErrorHandler;
@@ -86,11 +91,13 @@ namespace FieldMaxTest
             engine.EventNotifyPowerOff += PowerOffHandler;
             engine.EventNotifyPowerOn += PowerOnHandler;
             engine.EventNotifyProbeAdded += ProbeAddedHandler;
-            engine.EventNotifyProbeRemoved += PorbeRemovedHandler;
+            engine.EventNotifyProbeRemoved += ProbeRemovedHandler;
             engine.EventNotifyMeterAdded += NotifyMeterAddedHandler;
             engine.EventNotifyMeterRemoved += NotifyMeterRemovedHandler;
             engine.EventNotifyDisplayZeroDeviceProgressToClient += NotifyZeroDisplayZeroDeviceProgressToClientHandler;
 
+            folderBrowserDialog1.SelectedPath = "";
+            
             DataFile = new StreamWriter("LastData.txt");
         }       
 
@@ -100,11 +107,13 @@ namespace FieldMaxTest
             MessageBox.Show(serialNumber + " " + lastFault);
         }
 
-        public void PorbeRemovedHandler(string serialNumber)
+        public void ProbeRemovedHandler(string serialNumber)
         {
             timer1.Stop();
             string temp = serialNumber + " Probe removed";
             listBox1.Items.Add(temp);
+            if (DataFile != null)
+                DataFile.Flush();
             //MessageBox.Show(temp);
         }
 
@@ -134,6 +143,7 @@ namespace FieldMaxTest
             if (timer1.Enabled)
             {
                 list.Add(Convert.ToDouble(stopwatch.ElapsedMilliseconds), data);
+                allData.Add(Convert.ToDouble(stopwatch.ElapsedMilliseconds), data);
 
                 int numbOfDots = (int)numericUpDown_amountOfAverDots.Value;
 
@@ -183,8 +193,12 @@ namespace FieldMaxTest
 
         public void NotifyMeterRemovedHandler(string serialNumber, string deviceIndex)
         {
-            comboBox1.Items.Remove(serialNumber);
             devicesList.Remove(new Info(deviceIndex, serialNumber));
+            selectedDeviceComboBox1 = new Info();
+            comboBox1.Items.Remove(serialNumber);
+            if ((DataFile != null)&&(timer1.Enabled))
+                DataFile.Flush();
+                      
         }
 
         private void NotifyZeroDisplayZeroDeviceProgressToClientHandler(short zeroDeviceTimeoutCounter)
@@ -237,13 +251,15 @@ namespace FieldMaxTest
             {
                 engine.ChangeScanForData(true);
                 //engine.ScanForData.CheckTimer(ref engine.m_DevicesList);
-                DataFile.WriteLine(DateTime.Now.ToString());
+                StartTime = DateTime.Now.ToString();
+                DataFile.WriteLine(StartTime);
                 DataFile.WriteLine();
                 DataFile.WriteLine("Time, ms\tPower, W");
                 DataFile.Flush();
                 timer1.Start();
                 stopwatch.Start();
                 button_Start.Text = "Stop";
+                button_ExportData.Enabled = false;
 
             }
             else
@@ -254,7 +270,8 @@ namespace FieldMaxTest
                 stopwatch.Stop();
                 button_Start.Text = "Start";
                 DataFile.Flush();
-                                
+                if (allData.Count > 0)
+                    button_ExportData.Enabled = true;              
             }
 
         }
@@ -262,7 +279,8 @@ namespace FieldMaxTest
         private void BackLight_Click(object sender, EventArgs e)
         {
             //if(butt
-            engine.m_DevicesList.Item(selectedDeviceComboBox1.deviceIndex).BacklightCommand(true);
+            if (selectedDeviceComboBox1.serialNumber != null)
+                engine.m_DevicesList.Item(selectedDeviceComboBox1.deviceIndex).BacklightCommand(true);
             //engine.m_DevicesList.Item(devicesList.
         }
 
@@ -303,10 +321,31 @@ namespace FieldMaxTest
 
         private void ZeroButton_Click(object sender, EventArgs e)
         {
-            ZeroButton.Enabled = false;
-            Thread th = new Thread(engine.m_DevicesList.Item(selectedDeviceComboBox1.deviceIndex).ZeroDevice);
-            th.Start();
-            ZeroButton.Text = "Zeroing";
+            if (selectedDeviceComboBox1.serialNumber != null)
+            {
+                ZeroButton.Enabled = false;
+                Thread th = new Thread(engine.m_DevicesList.Item(selectedDeviceComboBox1.deviceIndex).ZeroDevice);
+                th.Start();
+                ZeroButton.Text = "Zeroing";
+            }
+        }
+
+        private void button_browse_Click(object sender, EventArgs e)
+        {
+            folderBrowserDialog1.ShowDialog();
+        }
+
+        private void button_ExportData_Click(object sender, EventArgs e)
+        {
+            SaveFile = new StreamWriter(folderBrowserDialog1.SelectedPath + "\\" + textBox_FileName.Text, true);
+            SaveFile.WriteLine(StartTime);
+            SaveFile.WriteLine();
+            SaveFile.WriteLine("Time, ms\tPower, W");
+            foreach (PointPair p in allData)
+            {
+                string temp = string.Format("{0,4}\t{1,4}", p.X, p.Y);
+            }
+            SaveFile.Close();
         }
     }
 }
