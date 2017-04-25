@@ -1,0 +1,115 @@
+;
+; $History: $
+;
+; Win2K or WinXP install for Coherent Fieldmax device.
+;
+; Install for USB device VID = 0x0D4D PID = 0x0033
+;
+;This .inf will create the following registry entries on Win2000
+;
+;HKLM\system\CurrentControlSet\Enum\USB\Vid_0D4D&Pid_0033
+;
+;Note: for the next key subkeys named 0000,0001, etc. are created.
+;HKLM\system\CurrentControlSet\Control\Class\{3F1BF071-69CE-425a-B482-1262C68D2078}
+;
+;These are the service entries:
+;HKLM\system\CurrentControlSet\Services\FLDMAX
+;
+;In winnt\inf files called OEMnn.inf and OEMnn.pnf are also created.
+;Search the OEM00.inf to OEMnn.inf files and delete the appropriate
+;.inf file along with the matching .pnf file.
+;
+;In Winnt\system32\drivers the following files are created:
+;  fldmax2.sys
+;  fldmax2prop.dll
+;
+; To completely remove this .inf file from the system you must
+; delete above mentioned files, registry entries and then REBOOT!
+;
+[Version]
+; copyright 2003 Andrew Pargeter & Associates
+;this install will only on work Win2k and WinXP!
+Signature="$Windows NT$"
+Class=COHERENTUSB
+ClassGUID="{3F1BF071-69CE-425a-B482-1262C68D2078}"
+Provider=%APA%
+DriverVer=02/08/2003,1.5
+
+[Manufacturer]
+%APA%=APA
+
+[DestinationDirs]
+; Destination dirs have to be this way (not just 12) as per DDK info on USB
+DefaultDestDir=10,System32\Drivers
+APAUSB.SysFiles=10,System32\Drivers
+APAUSB.DllFiles=10,System32
+
+[APAUSB.SysFiles]
+fldmax2.sys
+
+[APAUSB.DLLFiles]
+fldmax2prop.dll
+
+[SourceDisksFiles]
+fldmax2.sys=1
+fldmax2prop.dll=1
+
+[SourceDisksNames]
+1=%InstallDisk%,,,
+
+[ControlFlags]
+ExcludeFromSelect=*
+
+;Win2k+ only
+[ClassInstall32]
+DelFiles=APAUSB.SysFiles,APAUSB.DllFiles
+;Copyfiles=APAUSB.SysFiles,APAUSB.DllFiles
+AddReg=ClassInstall32.AddReg
+
+;Win2k+ only
+[ClassInstall32.AddReg]
+HKR,,,0,%ClassDesc%
+HKR,,Icon,,-20
+HKR,,EnumPropPages32,,"fldmax2prop.dll,PropPageProvider" 
+
+[APA]
+%USB\VID_0D4D&PID_0033.DeviceDesc%=APAUSB, USB\VID_0D4D&PID_0033
+
+;Win2k+ only
+[APAUSB.NT]
+CopyFiles=APAUSB.DllFiles,APAUSB.SysFiles
+
+;Win2k+ only
+[APAUSB.NT.Services]
+;the first parameter is the name of the service in 
+;HKLM\system\CurrentControlSet\Services
+;the service is named FIELDMAX in this case
+AddService = FIELDMAX, 0x00000002, APAUSB.AddService
+
+;Win2k+ only
+[APAUSB.AddService]
+DisplayName    = %APAUSB.SvcDesc%
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_DEMAND_START  
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %10%\System32\Drivers\fldmax2.sys
+AddReg=APAUSB.AddReg
+
+[APAUSB.AddReg]
+HKR,,ClassGUID,0,%APAClassGUID%
+HKR,%ConfigKey%,MaxTransfer,0x00010001,65536
+HKR,%ConfigKey%,AuthKey,0,%AuthKey%
+HKR,%ConfigKey%,RenumOnHibernate,0x00010001,0
+
+;------------------------ Strings ----------------------------;
+
+[Strings]
+APA="Coherent."
+ConfigKey="Vid_0D4D&Pid_0033"
+USB\VID_0D4D&PID_0033.DeviceDesc="Coherent Fieldmax USB Device"
+APAUSB.SvcDesc="Coherent FieldMax USB Driver"
+InstallDisk="USBDriverInstallationDisk"
+ClassDesc="Coherent FieldMax Devices"
+APAClassGUID="{3F1BF071-69CE-425a-B482-1262C68D2078}"
+AuthKey="cc53a1bb391c3295"
+
