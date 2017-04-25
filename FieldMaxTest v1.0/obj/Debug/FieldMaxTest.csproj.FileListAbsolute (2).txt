@@ -1,0 +1,36 @@
+\\Mac\Home\Desktop\FieldMaxTest\bin\Debug\FieldMaxTest.exe.config
+\\Mac\Home\Desktop\FieldMaxTest\obj\Debug\Interop.ccrpTimers6.dll
+\\Mac\Home\Desktop\FieldMaxTest\obj\Debug\Interop.FieldMax2DLLServer.dll
+\\Mac\Home\Desktop\FieldMaxTest\obj\Debug\FieldMaxTest.csproj.ResolveComReference.cache
+\\Mac\Home\Desktop\FieldMaxTest\obj\Debug\FieldMaxTest.csprojResolveAssemblyReference.cache
+\\Mac\Home\Desktop\FieldMaxTest\obj\Debug\FieldMaxTest.Form1.resources
+\\Mac\Home\Desktop\FieldMaxTest\obj\Debug\FieldMaxTest.Properties.Resources.resources
+\\Mac\Home\Desktop\FieldMaxTest\obj\Debug\FieldMaxTest.csproj.GenerateResource.Cache
+\\Mac\Home\Desktop\FieldMaxTest\bin\Debug\FieldMaxTest.exe
+\\Mac\Home\Desktop\FieldMaxTest\bin\Debug\FieldMaxTest.pdb
+\\Mac\Home\Desktop\FieldMaxTest\bin\Debug\ZedGraph.dll
+\\Mac\Home\Desktop\FieldMaxTest\bin\Debug\Interop.ccrpTimers6.dll
+\\Mac\Home\Desktop\FieldMaxTest\bin\Debug\Interop.FieldMax2DLLServer.dll
+\\Mac\Home\Desktop\FieldMaxTest\obj\Debug\FieldMaxTest.exe
+\\Mac\Home\Desktop\FieldMaxTest\obj\Debug\FieldMaxTest.pdb
+\\Mac\Home\Documents\FieldMax\FieldMaxTest\bin\Debug\FieldMaxTest.exe.config
+\\Mac\Home\Documents\FieldMax\FieldMaxTest\obj\Debug\Interop.ccrpTimers6.dll
+\\Mac\Home\Documents\FieldMax\FieldMaxTest\obj\Debug\Interop.FieldMax2DLLServer.dll
+\\Mac\Home\Documents\FieldMax\FieldMaxTest\obj\Debug\FieldMaxTest.csproj.ResolveComReference.cache
+\\Mac\Home\Documents\FieldMax\FieldMaxTest\obj\Debug\FieldMaxTest.exe
+\\Mac\Home\Documents\FieldMax\FieldMaxTest\obj\Debug\FieldMaxTest.pdb
+\\Mac\Home\Documents\FieldMax\FieldMaxTest\bin\Debug\FieldMaxTest.exe
+\\Mac\Home\Documents\FieldMax\FieldMaxTest\bin\Debug\FieldMaxTest.pdb
+\\Mac\Home\Documents\FieldMax\FieldMaxTest\bin\Debug\ZedGraph.dll
+\\Mac\Home\Documents\FieldMax\FieldMaxTest\bin\Debug\Interop.ccrpTimers6.dll
+\\Mac\Home\Documents\FieldMax\FieldMaxTest\bin\Debug\Interop.FieldMax2DLLServer.dll
+\\Mac\Home\Documents\FieldMax\FieldMaxTest\obj\Debug\FieldMaxTest.csprojResolveAssemblyReference.cache
+\\Mac\Home\Documents\FieldMax\FieldMaxTest\obj\Debug\FieldMaxTest.Form1.resources
+\\Mac\Home\Documents\FieldMax\FieldMaxTest\obj\Debug\FieldMaxTest.Properties.Resources.resources
+\\Mac\Home\Documents\FieldMax\FieldMaxTest\obj\Debug\FieldMaxTest.csproj.GenerateResource.Cache
+Y:\Yandex.Disk.localized\Автоматизация эксперимента\FieldMaxTest\FieldMax\FieldMaxTest\bin\Debug\FieldMaxTest.exe.config
+Y:\Yandex.Disk.localized\Автоматизация эксперимента\FieldMaxTest\FieldMax\FieldMaxTest\obj\Debug\Interop.ccrpTimers6.dll
+Y:\Yandex.Disk.localized\Автоматизация эксперимента\FieldMaxTest\FieldMax\FieldMaxTest\obj\Debug\Interop.FieldMax2DLLServer.dll
+Y:\Yandex.Disk.localized\Автоматизация эксперимента\FieldMaxTest\FieldMax\FieldMaxTest\obj\Debug\FieldMaxTest.csproj.ResolveComReference.cache
+Y:\Yandex.Disk.localized\Автоматизация эксперимента\FieldMaxTest\FieldMax\FieldMaxTest\obj\Debug\FieldMaxTest.exe
+Y:\Yandex.Disk.localized\Автоматизация эксперимента\FieldMaxTest\FieldMax\FieldMaxTest\obj\Debug\FieldMaxTest.pdb

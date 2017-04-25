@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns="urn:schemas-microsoft-com:asm.v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <assemblyIdentity name="FieldMaxTest.exe" version="1.0.0.0" processorArchitecture="x86" type="win32" />
+  <file name="FieldMax2DLLServer.dll" asmv2:size="110592">
+    <hash xmlns="urn:schemas-microsoft-com:asm.v2">
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>uaj5I2aQHIa6Q0k6vX1e8v4ZF5mg6xG6hAIzUj4LTr8=</dsig:DigestValue>
+    </hash>
+    <typelib tlbid="{3b64e1ef-5dbc-4cca-9c2a-f2d10c510050}" version="2.0" helpdir="" resourceid="0" flags="HASDISKIMAGE" />
+    <comClass clsid="{31046155-2673-43ad-b19d-e5793d60157e}" threadingModel="Apartment" tlbid="{3b64e1ef-5dbc-4cca-9c2a-f2d10c510050}" progid="FieldMax2DLLServer.cFM2Device" />
+    <comClass clsid="{29e7317c-d71c-41b8-9aa1-9518a2568131}" threadingModel="Apartment" tlbid="{3b64e1ef-5dbc-4cca-9c2a-f2d10c510050}" progid="FieldMax2DLLServer.IFM2Listener" />
+    <comClass clsid="{27669a44-b096-438b-bafc-ebcab23baf84}" threadingModel="Apartment" tlbid="{3b64e1ef-5dbc-4cca-9c2a-f2d10c510050}" progid="FieldMax2DLLServer.IFM2DeviceEvents" />
+    <comClass clsid="{65d8524d-9dab-41ee-a323-4a3086f246e3}" threadingModel="Apartment" tlbid="{3b64e1ef-5dbc-4cca-9c2a-f2d10c510050}" progid="FieldMax2DLLServer.cFM2ScanUSBForChange" />
+    <comClass clsid="{a7a17fb7-0372-4aa3-966d-acefbf7266ef}" threadingModel="Apartment" tlbid="{3b64e1ef-5dbc-4cca-9c2a-f2d10c510050}" progid="FieldMax2DLLServer.cFM2ScanForData" />
+    <comClass clsid="{bfd85fb2-3589-4287-b5ad-d5a517f4084a}" threadingModel="Apartment" tlbid="{3b64e1ef-5dbc-4cca-9c2a-f2d10c510050}" progid="FieldMax2DLLServer.cFM2Listener" />
+    <comClass clsid="{0fab23ee-e0fa-4dba-877f-5f491170865b}" threadingModel="Apartment" tlbid="{3b64e1ef-5dbc-4cca-9c2a-f2d10c510050}" progid="FieldMax2DLLServer.IFM2Device" />
+    <comClass clsid="{7ad69f72-cc4a-46f0-8a9b-d58fbf064cc7}" threadingModel="Apartment" tlbid="{3b64e1ef-5dbc-4cca-9c2a-f2d10c510050}" progid="FieldMax2DLLServer.cFM2Devices" />
+  </file>
+</assembly>
